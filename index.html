@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="con">
+        <p class="se">Move Images</p>
+        <div class="main">
+
+            <div class="items">
+                <!-- Existing boxes -->
+                <div class="move" id="five">
+                    <p class="one-text">Once Again Happy Birthday Ra Pandhi</p>
+                </div>
+                <div class="move" id="four"></div>
+                <div class="move" id="three">
+                    <p class="one-text">Happy birthday to you, sweetheart! Today is all about you, and I want to make it special, although every day is special as long as I am with you.</p>
+                </div>
+                <div class="move" id="two">
+                    
+                    <p class="one-text">Many More Happy Returns Of The Day Ra.....</p>
+                </div>
+                <div class="move" id="one">
+                    <p class="one-text">Hey Pottoda!</p>
+                </div>
+
+                <!-- New draggable boxes with background images -->
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generalized drag function to handle both mouse and touch events
+        function makeDraggable(element) {
+            // Mouse events
+            element.addEventListener('mousedown', startDrag);
+            // Touch events for mobile
+            element.addEventListener('touchstart', startDrag);
+
+            function startDrag(e) {
+                e.preventDefault(); // Prevent default touch scrolling behavior on mobile
+
+                // For touch events, use touch points, for mouse events use clientX/clientY
+                const moveEvent = e.type === 'touchstart' ? 'touchmove' : 'mousemove';
+                const stopEvent = e.type === 'touchstart' ? 'touchend' : 'mouseup';
+
+                // Event listener for dragging
+                document.addEventListener(moveEvent, drag);
+                // Event listener for stopping the drag
+                document.addEventListener(stopEvent, stopDrag);
+
+                function drag(e) {
+                    // Get position for touch or mouse events
+                    let x = (e.type === 'touchmove' ? e.touches[0].clientX : e.clientX) - 75 + 'px';
+                    let y = (e.type === 'touchmove' ? e.touches[0].clientY : e.clientY) - 75 + 'px';
+                    element.style.left = x;
+                    element.style.top = y;
+                }
+
+                function stopDrag() {
+                    document.removeEventListener(moveEvent, drag);
+                    document.removeEventListener(stopEvent, stopDrag);
+                }
+            }
+        }
+
+        // Apply the drag function to all elements with the class 'move'
+        var draggableElements = document.querySelectorAll('.move');
+        draggableElements.forEach(function (element) {
+            makeDraggable(element);
+        });
+    </script>
+</body>
+</html>
+<style>
+ @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Maname&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Righteous&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sevillana&family=Zain:wght@200;300;400;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Clicker+Script&family=Gurajada&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Great+Vibes&family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Kalam:wght@300;400;700&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Marck+Script&family=Merienda:wght@300..900&family=Montez&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Sacramento&family=Sedan+SC&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    background: url(back.jpg);
+    background-size: cover;
+}
+
+.con {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 62.5vh;
+    margin-right: 380px;
+    margin-top: -100px;
+}
+.se{
+    position: absolute;
+    font-family: "Zain", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    width: 300px;
+    margin-left: 540px;
+    margin-top: -50px;
+}
+
+.move {
+    width: 270px;
+    height: 270px;
+    position: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    z-index: 2;
+}
+
+/* Custom background images for each move box */
+#one {
+    background-image: url('one.png');
+    width: 320px;
+    height: 320px;
+    margin-top: 30px;
+    margin-left: 30px;
+
+}
+#one .one-text{
+    margin-top: 100px;
+    font-size: 30px;
+}
+
+
+#two {
+    width: 400px;
+    height: 400px;
+    background-image: url('second.png');
+}
+#two .one-text{
+    width: 70px;
+    right: 0;
+    margin-left: 230px;
+    margin-top: 80px;
+}
+
+
+#three {
+    width: 400px;
+    height: 400px;
+    background-image: url('three.png');
+
+}
+#three .one-text{
+    width: 120px;
+    margin-left: 55px;
+    margin-top: 80px;
+    font-size: 17px;
+}
+
+#four {
+    width: 400px;
+    height: 400px;
+    background-image: url('four.png');
+
+}
+
+#five {
+    width: 400px;
+    height: 400px;
+    background-image: url('five.png');
+
+}
+#five .one-text{
+    margin-top: 175px;
+    width: 170px;
+    margin-left: 170px;
+}
+
+/*
+#six {
+    background-image: url('six.png');
+}
+
+#seven {
+    background-image: url('seven.png');
+}
+
+#eight {
+    background-image: url('eight.png');
+}*/
+
+.one-text{
+    font-size: 19.5px;
+    font-family: "Zain", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    z-index: -1;
+    padding: 5px;
+}
+
+.gif {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    margin-top: 120px;
+    margin-left: 120px;
+    mix-blend-mode: multiply;
+}
+
+
+.top-pic {
+    position: absolute;
+    width: 205px;
+    height: 275.5px;
+    top: 0;
+    right: 0;
+}
+
+</style>
